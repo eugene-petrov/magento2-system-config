@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Snippet\SystemConfig\Model\System\Config\General">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="enabled" xsi:type="string">system_config/general/enabled</item>
+                <item name="api_url" xsi:type="string">system_config/general/api_url</item>
+                <item name="api_key" xsi:type="string">system_config/general/api_key</item>
+                <item name="email" xsi:type="string">system_config/general/email</item>
+                <item name="countries" xsi:type="string">system_config/general/countries</item>
+                <item name="time" xsi:type="string">system_config/general/time</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Snippet\SystemConfig\Model\System\Config\DynamicForm">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="values" xsi:type="string">system_config/custom_dynamic_form/values</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Snippet\SystemConfig\Model\System\Config\FrontendModel">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="color" xsi:type="string">system_config/custom_frontend_model/color</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

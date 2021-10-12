@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="snippet" translate="label" sortOrder="100">
+            <label>Snippet</label>
+        </tab>
+        <section id="system_config" showInDefault="1" showInStore="1" showInWebsite="1" translate="label" sortOrder="150">
+            <label>General Settings</label>
+            <tab>snippet</tab>
+            <resource>Snippet_SystemConfig::system_config</resource>
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="api_url" translate="label" type="text" sortOrder="20" showInDefault="1" canRestore="1">
+                    <label>API URL</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="api_key" translate="label" type="obscure" sortOrder="30" showInDefault="1">
+                    <label>API KEY</label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="email" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                    <validate>validate-email</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Email\Address</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="countries" translate="label" type="multiselect" sortOrder="50" showInDefault="1" showInWebsite="1">
+                    <label>Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="time" translate="label" type="time" sortOrder="55" showInDefault="1">
+                    <label>Start Time</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="cron_expr" sortOrder="60" type="text" showInDefault="1" translate="label" canRestore="1">
+                    <label>Schedule (cron syntax)</label>
+                    <comment><![CDATA[<a href="http://crontab.guru/" target="_blank">Need help?</a>]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="stub_enable" translate="label" type="select" sortOrder="70" showInDefault="1">
+                    <label>Enable Stubs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="stub_request_1" translate="label" type="textarea" sortOrder="80" showInDefault="1" canRestore="1">
+                    <label>Request 1 response</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="stub_enable">1</field>
+                    </depends>
+                </field>
+                <field id="stub_request_2" translate="label" type="textarea" sortOrder="90" showInDefault="1" canRestore="1">
+                    <label>Request 2 response</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="stub_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="custom_dynamic_form" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Dynamic Form Example</label>
+                <field id="values" translate="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ranges</label>
+                    <frontend_model>Snippet\SystemConfig\Block\Adminhtml\Form\Field\Ranges</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment><![CDATA[<a href="https://devdocs.magento.com/guides/v2.4/ext-best-practices/tutorials/dynamic-row-system-config.html" target="_blank">Magento devdocs</a>]]></comment>
+                </field>
+            </group>
+            <group id="custom_frontend_model" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Frontend Model</label>
+                <field id="color" translate="label,comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color</label>
+                    <frontend_model>Snippet\SystemConfig\Block\Adminhtml\ColorPicker</frontend_model>
+                    <comment>Default is #054b72</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

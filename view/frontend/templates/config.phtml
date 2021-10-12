@@ -1,0 +1,60 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ * @var Snippet\SystemConfig\ViewModel\ConfigPool $configPool
+ */
+$configPool = $block->getConfigPool();
+if (!$configPool->getGeneralConfig()->isEnabled()) {
+    echo $escaper->escapeHtml(__('Go to the admin panel and change the settings:'));
+    echo $escaper->escapeHtml(__('Stores > Configuration > Snippet > General Settings > Enabled -> enable'));
+    return;
+}
+?>
+<h2><?= $escaper->escapeHtml(__('General settings')) ?></h2>
+<table>
+    <tr>
+        <td><b><?= $escaper->escapeHtml(__('Api Url')) ?></b></td>
+        <td><?= $escaper->escapeHtml($configPool->getGeneralConfig()->getApiUrl()) ?></td>
+    </tr>
+    <tr>
+        <td><b><?= $escaper->escapeHtml(__('Api Key')) ?></b></td>
+        <td><?= $escaper->escapeHtml($configPool->getGeneralConfig()->getApiKey()) ?></td>
+    </tr>
+    <tr>
+        <td><b><?= $escaper->escapeHtml(__('Email')) ?></b></td>
+        <td><?= $escaper->escapeHtml($configPool->getGeneralConfig()->getEmail()) ?></td>
+    </tr>
+    <tr>
+        <td><b><?= $escaper->escapeHtml(__('Time')) ?></b></td>
+        <td><?= $escaper->escapeHtml($configPool->getGeneralConfig()->getTime()) ?></td>
+    </tr>
+    <tr>
+        <td><b><?= $escaper->escapeHtml(__('Countries')) ?></b></td>
+        <td><?= $escaper->escapeHtml($configPool->getGeneralConfig()->getCountries()) ?></td>
+    </tr>
+</table>
+
+<h2><?= $escaper->escapeHtml(__('Dynamic form setting')) ?></h2>
+<table>
+    <tr>
+        <th><?= $escaper->escapeHtml(__('From')) ?></th>
+        <th><?= $escaper->escapeHtml(__('To')) ?></th>
+        <th><?= $escaper->escapeHtml(__('Price')) ?></th>
+        <th><?= $escaper->escapeHtml(__('Tax')) ?></th>
+    </tr>
+    <?php foreach ($configPool->getDynamicFormConfig()->getValues() as $item): ?>
+        <tr>
+            <td><?= $escaper->escapeHtml($item['from_qty']) ?></td>
+            <td><?= $escaper->escapeHtml($item['to_qty']) ?></td>
+            <td><?= $escaper->escapeHtml($item['price']) ?></td>
+            <td><?= $escaper->escapeHtml($item['tax']) ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<h2><?= $escaper->escapeHtml(__('Fronted model setting')) ?></h2>
+<div
+    style="height: 20px;
+    background-color: <?= $escaper->escapeHtml($configPool->getFrontendModelConfig()->getColor()) ?>">
+</div>

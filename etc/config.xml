@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <system_config>
+            <general>
+                <api_url>http://example.com/</api_url>
+                <countries>AF,AO,AT,BE,BG</countries>
+            </general>
+            <custom_dynamic_form>
+                <values>{"item1":{"from_qty":"1","to_qty":"5","price":"10.00","tax":"1"},"item2":{"from_qty":"6","to_qty":"10","price":"20.00","tax":"1"},"item3":{"from_qty":"11","to_qty":"15","price":"30.00","tax":"0"}}</values>
+            </custom_dynamic_form>
+            <custom_frontend_model>
+                <color>#054b72</color>
+            </custom_frontend_model>
+        </system_config>
+    </default>
+</config>
