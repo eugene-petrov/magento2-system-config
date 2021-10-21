@@ -49,7 +49,7 @@ class TaxColumn extends Select
     }
 
     /**
-     * @inheridoc
+     * @return string
      */
     public function _toHtml(): string
     {

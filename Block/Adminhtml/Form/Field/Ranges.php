@@ -16,7 +16,7 @@ class Ranges extends AbstractFieldArray
     private $taxRenderer;
 
     /**
-     * @inheridoc
+     * @throws LocalizedException
      */
     protected function _prepareToRender()
     {
@@ -32,7 +32,8 @@ class Ranges extends AbstractFieldArray
     }
 
     /**
-     * @inheridoc
+     * @param DataObject $row
+     * @throws LocalizedException
      */
     protected function _prepareArrayRow(DataObject $row)
     {
