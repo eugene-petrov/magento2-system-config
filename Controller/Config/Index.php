@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Snippet\SystemConfig\Controller\Config;
 
 use Magento\Framework\App\ActionInterface;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\PageFactory;
 
 class Index implements ActionInterface
@@ -23,9 +24,9 @@ class Index implements ActionInterface
     }
 
     /**
-     * @inheridoc
+     * @return ResultInterface
      */
-    public function execute()
+    public function execute(): ResultInterface
     {
         return $this->pageFactory->create();
     }

@@ -16,7 +16,7 @@ Task: Create a stores > configuration config
 
 How it looks like in backend:
 ![backend](./.readme/backend.png)
-![backend](./.readme/backend_1.png)
+![backend_1](./.readme/backend_1.png)
 
 How it looks like in frontend http://{host.name}/snippet/config:
 ![frontend](./.readme/frontend.png)
